@@ -2,9 +2,11 @@
 	header('Content-Type: text/html; charset=utf-8');
 	require "NewsDB.class.php";
 	$news = new NewsDB;
-	$errMsg = '';
+	$notificationMsg = '';
 	if($_SERVER['REQUEST_METHOD']=='POST')
 		include "save_news.inc.php";
+    if(isset($_GET['del']))
+        include 'delete_news.inc.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -18,8 +20,8 @@
 
 <h1>Последние новости</h1>
 <?php
-if($errMsg)
-	echo "<h3>$errMsg</h3>";
+if($notificationMsg)
+	echo "<h3>$notificationMsg</h3>";
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 

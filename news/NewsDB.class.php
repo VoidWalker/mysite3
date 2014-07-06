@@ -6,6 +6,7 @@ class NewsDB implements INewsDB{
 	const DB_NAME = 'D:\xampp\htdocs\mysite3.local\news.db';
 	
 	function __construct(){
+        try{
 		if(is_file(self::DB_NAME)){
 			$this->_db = new SQLite3(self::DB_NAME);
 		}else{
@@ -18,19 +19,25 @@ class NewsDB implements INewsDB{
 					description TEXT,
 					source TEXT,
 					datetime INTEGER)";
-			$this->_db->exec($sql) or die($this->_db->lastErrorMsg());
+			if(!$this->_db->exec($sql))
+                throw new Exception($this->_db->lastErrorMsg());
 			
 			$sql = "CREATE TABLE category(
 					id INTEGER,
 					name TEXT)";
-			$this->_db->exec($sql) or die($this->_db->lastErrorMsg());
+			if(!$this->_db->exec($sql))
+                throw new Exception($this->_db->lastErrorMsg());
 			
 			$sql = "INSERT INTO category(id, name)
 					SELECT 1 as id, 'Политика' as name
 					UNION SELECT 2 as id, 'Культура' as name
 					UNION SELECT 3 as id, 'Спорт' as name";
-			$this->_db->exec($sql) or die($this->_db->lastErrorMsg());
-		}
+			if(!$this->_db->exec($sql))
+                throw new Exception($this->_db->lastErrorMsg());
+        }
+		}catch (Exception $e){
+            return false;
+        }
 	}
 	
 	function __destruct(){
@@ -38,7 +45,8 @@ class NewsDB implements INewsDB{
 	}
 	
 	function saveNews($title, $category, $description, $source){
-		$dt = time();
+		try{
+        $dt = time();
 		$sql = "INSERT INTO msgs(title, category, description, source, datetime)
 				VALUES(:title, :category, :description, :source, :datetime)";
 		$stmt = $this->_db->prepare($sql);
@@ -47,8 +55,14 @@ class NewsDB implements INewsDB{
 		$stmt->bindParam(':description', $description, SQLITE3_TEXT);
 		$stmt->bindParam(':source', $source, SQLITE3_TEXT);
 		$stmt->bindParam(':datetime', $dt, SQLITE3_INTEGER);
-		$result = $stmt->execute() or die($this->_db->lastErrorMsg());
-		$stmt->reset();
+		$result = $stmt->execute();
+        $stmt->reset();
+        if(!$result)
+            throw new Exception($this->_db->lastErrorMsg());
+		return true;
+        }catch(Exception $e){
+            return false;
+        }
 	}
 	
 	function clearStr($data){
@@ -68,14 +82,35 @@ class NewsDB implements INewsDB{
 	}
 	
 	function getNews(){
-		$sql = "SELECT msgs.id as id, title, category.name, description, source, datetime
+		try{
+        $sql = "SELECT msgs.id as id, title, category.name, description, source, datetime
 				FROM msgs, category
 				WHERE msgs.category = category.id
 				ORDER BY msgs.id DESC";
-		$result = $this->_db->query($sql) or die($this->_db->lastErrorMsg());
+		$result = $this->_db->query($sql);
+        if(!$result)
+            throw new Exception($this->_db->lastErrorMsg());
 		return $this->db2Arr($result);
+        }catch(Exception $e){
+            //$e->getMessage();
+            return false;
+        }
 	}
 	
-	function deleteNews($id){}
+	function deleteNews($id){
+        try{
+        $sql = "DELETE FROM msgs
+                WHERE id=:id";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':id', $id, SQLITE3_INTEGER);
+        $result = $stmt->execute();
+        $stmt->reset();
+        if(!$result)
+            throw new Exception($this->_db->lastErrorMsg());
+        return true;
+        }catch(Exeption $e){
+            //$e->getMessage();
+            return false;
+        }
+    }
 }
-?>
