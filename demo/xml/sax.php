@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/html;charset=utf-8");	
-	// Создание парсера
+	// Создание парсера test commit
 	$sax = xml_parser_create("utf-8");
 	// Назначение обработчиков начальных и конечных тегов
 	xml_set_element_handler($sax, 'onStart', 'onEnd');
