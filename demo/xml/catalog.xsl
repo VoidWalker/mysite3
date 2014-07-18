@@ -45,7 +45,7 @@
 	<!-- 
 	Шаблон отрисовки книги стоимостью менее 200 руб.
 	-->
-	<xsl:template match="book[price &lt; 200]">
+	<xsl:template match="book[price &lt;= 200]">
 		<tr>
 			<xsl:apply-templates select="./*" />
 		</tr>

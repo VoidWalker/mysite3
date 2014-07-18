@@ -9,7 +9,7 @@ if(empty($title) or empty($description)){
 	if(!$news->saveNews($title, $category, $description, $source)){
         $notificationMsg = "Saving error!";
     }else{
-	header('Location: news.php');
+	    header('Location: news.php');
         exit;
     }
 }

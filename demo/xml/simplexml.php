@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/html;charset=utf-8");	
-	
+$sxml = simplexml_load_file('catalog.xml');
 ?>
 <html>
 	<head>

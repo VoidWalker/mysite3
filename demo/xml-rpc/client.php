@@ -18,7 +18,7 @@ function make_request($request_xml, &$arMessage, $num) {
 	$context = stream_context_create($opts);		
 	//$fp = fopen('http://mysite.local/demo/xml-rpc/server.php', 'r', false, $context);
 	//$retval = stream_get_contents($fp);
-	$retval = file_get_contents('http://mysite.local/demo/xml-rpc/server.php', false, $context);
+	$retval = file_get_contents('http://localhost/mysite3.local/demo/xml-rpc/server.php', false, $context);
 	$data = xmlrpc_decode($retval);
 	if (is_array($data) && xmlrpc_is_fault($data)){
 		$arMessage[] = "Невозможно получить данные о полке номер $num";

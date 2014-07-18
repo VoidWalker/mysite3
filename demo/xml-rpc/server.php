@@ -12,6 +12,7 @@ function get_stock($method_name, $args, $extra) {
 	else
 		return array('faultCode'=>-1, 'faultString'=>"Полка номер $num отсутствует!");
 }
+
 $request_xml = file_get_contents("php://input");
 /* Создаем XML-RPC сервер и регистрируем функцию */
 $xmlrpc_server = xmlrpc_server_create();

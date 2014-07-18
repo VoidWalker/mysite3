@@ -29,7 +29,7 @@
 
 	<service name='StockService'> 
 		<port name='StockPort' binding='StockBinding'> 
-			<soap:address location='http://mysite.local/demo/soap/server.php'/> 
+			<soap:address location='http://localhost/mysite3.local/demo/soap/server.php'/>
 		</port> 
 	</service> 
 </definitions>

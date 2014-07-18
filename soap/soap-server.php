@@ -6,7 +6,7 @@ class NewsService extends NewsDB{
 		try{
 			$sql = "SELECT id, title, 
 					(SELECT name FROM category WHERE category.id=msgs.category) as category, description, source, datetime 
-					FROM msgsa
+					FROM msgs
 					WHERE id = $id";
 			$result = $this->_db->query($sql);
 			if (!is_object($result)) 
@@ -41,4 +41,10 @@ class NewsService extends NewsDB{
 		}
 	}
 }
+
+ini_set("soap.wsdl+cache_enabled", "0");
+$server = new SoapServer("http://localhost/mysite3.local/soap/news.wsdl");
+$server->setClass("NewsService");
+$server->handle();
+
 ?>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Latest news</title>
+    <link>/news/news.php</link>
+    <item>
+      <title>new rss</title>
+      <link>new source for rss</link>
+      <description>check for updeting</description>
+      <pubDate>13-07-2014 19:12:52</pubDate>
+      <category>Политика</category>
+    </item>
+    <item>
+      <title>RSS-title</title>
+      <link>rss source</link>
+      <description>Rss description</description>
+      <pubDate>12-07-2014 22:37:57</pubDate>
+      <category>Политика</category>
+    </item>
+    <item>
+      <title>sdfsdf</title>
+      <link>sdfsdfsdf</link>
+      <description>sdfsdfsdf</description>
+      <pubDate>06-07-2014 18:38:02</pubDate>
+      <category>Политика</category>
+    </item>
+    <item>
+      <title>testik</title>
+      <link>NewSource to news</link>
+      <description>Description of a news.</description>
+      <pubDate>06-07-2014 18:34:27</pubDate>
+      <category>Политика</category>
+    </item>
+    <item>
+      <title>Test1</title>
+      <link>Onemore source</link>
+      <description>Here is a new test news.</description>
+      <pubDate>06-07-2014 18:33:46</pubDate>
+      <category>Политика</category>
+    </item>
+    <item>
+      <title>Test</title>
+      <link>Test Source</link>
+      <description>Test description</description>
+      <pubDate>25-06-2014 22:53:09</pubDate>
+      <category>Политика</category>
+    </item>
+  </channel>
+</rss>

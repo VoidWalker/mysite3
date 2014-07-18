@@ -50,7 +50,7 @@
 
 	<service name='NewsService'> 
 		<port name='NewsPort' binding='NewsBinding'> 
-			<soap:address location='http://mysite.local/soap/soap-server.php'/> 
+			<soap:address location='http://localhost/mysite3.local/soap/soap-server.php'/>
 		</port> 
 	</service> 
 </definitions>

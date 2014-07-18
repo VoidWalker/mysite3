@@ -26,16 +26,17 @@ $reader->XML($str);
 $count=0;
 //$reader->read();
 while($reader->read()){
-	//echo $reader->name.': '.$reader->depth.'<br>';
+	echo $reader->name.'> '.$reader->depth.'<br>';
 	//echo $a;
 	if($reader->name === "book" && $reader->nodeType == XMLReader::ELEMENT){
-		$dom = $reader->expand();//.'<br>'; 
+		$dom = $reader->expand();//.'<br>';
+        echo "<pre>";
 		//var_dump($dom);
 		foreach($dom->childNodes as $item)
 			echo 'item: '.$item->nodeName.'<br>';
-		exit;
+		//exit;
 		//echo $reader->name.'<br>';
-		//$reader->next();
+		 $reader->next();
 		//echo $reader->value;
 		echo 'ok';//exit;
 	}

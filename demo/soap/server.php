@@ -18,7 +18,7 @@
     // Отключение кэширования WSDL-документа
 	ini_set("soap.wsdl_cache_enabled", "0");
 	// Создание SOAP-сервер
-	$server = new SoapServer("http://mysite.local/demo/soap/stock.wsdl");
+	$server = new SoapServer("http://localhost/mysite3.local/demo/soap/stock.wsdl");
 	// Добавить класс к серверу
 	$server->addFunction("getStock");
 	// Запуск сервера
