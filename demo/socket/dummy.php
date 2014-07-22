@@ -1,4 +1,4 @@
-<?
+﻿<?
 $name = strip_tags($_POST["name"]);
 $age = $_POST["age"] * 1;
 ?>

@@ -1,14 +1,14 @@
 <?php
 	// Сокетное соединение
 	// Создаем сокет (host+порт)
-	$socket = fsockopen("mysite.local", 80, $sock_errno, $sock_errmsg, 30);
+	$socket = fsockopen("localhost/mysite3.local", 80, $sock_errno, $sock_errmsg, 30);
 	
 	// Создаем POST-строку
 	$str_query = "name=John&age=25";
 	
 	// Посылка HTTP-запроса
 	$out = "POST /demo/socket/dummy.php HTTP/1.1\r\n";
-	$out .= "Host: mysite.local\r\n";
+	$out .= "Host: localhost/mysite3.local\r\n";
 	$out .= "Content-Type: application/x-www-form-urlencoded\r\n";
 	$out .= "Content-length: " . strlen($str_query). "\r\n\r\n";
 	

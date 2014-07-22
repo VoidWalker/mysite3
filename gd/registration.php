@@ -1,5 +1,17 @@
-<?php
-
+﻿<?php
+header('Content-Type: text/html; charset=utf-8');
+session_start();
+$result = '';
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if(!$_SESSION['randStr']){
+        $result = "Enable image render!";
+    }else{
+        if($_SESSION['randStr'] == $_POST['str'])
+            $result = "GOOD!";
+        else
+            $result = "BAD!";
+    }
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -19,7 +31,7 @@
 	<input type="submit" value="OK">
 </form>
 <?php 
-
+echo $result;
 ?>
 </body>
 </html>
